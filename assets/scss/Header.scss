@@ -1,8 +1,26 @@
 .header {
- background: #FDFCFD;
- padding: 20px 45px;
+  background: #FDFCFD;
+  padding: 10px 25px 0 25px;
+  height: 65px;
+  display: flex;
+  align-items: center;
 
- &__content {
+  &__user {
+    display: flex;
+    align-items: center;
+  }
   
- }
+  .list-info {
+    display: flex;
+    align-items: center;
+
+    .item {
+      margin: 0 10px;
+
+      &--avatar{
+        font-size: 24px;
+      }
+    }
+  }
+
 }

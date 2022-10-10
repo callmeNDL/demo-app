@@ -1,7 +1,13 @@
 import type { NextPage } from 'next';
+import CreateUser from '../components/CreateUser';
+import TableUser from '../components/TableUser';
 
 const Home: NextPage = ({}) => {
-  return <>ndlaaa</>;
+  return <>
+  <CreateUser />
+  <TableUser />
+  </>;
+
 };
 
 export default Home;
