@@ -1,11 +1,29 @@
-import { Row, Col,Switch } from 'antd';
-import { QuestionCircleOutlined, BellOutlined,UserOutlined } from '@ant-design/icons';
+import { Row, Col,Switch, Dropdown,Menu  } from 'antd';
+import { QuestionCircleOutlined, BellOutlined,UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import Image from 'next/image';
 import logo from '../assets/img/logo-payMe.png'
 
 export interface IHeaderProps {}
 
-export default function Header(props: IHeaderProps) {
+const Header = () => {
+
+  const handleLogout=()=>{
+    alert("logout")
+  }
+
+  const menu = (
+    <Menu
+      items={[
+        {
+          key: '1',
+          label: (
+            <div onClick={handleLogout}> <LogoutOutlined style={{paddingRight:"5px"}}/>Đăng xuất</div>
+          ),
+        },
+      ]}
+    />
+  );
+
   return (
       <Row className="header" justify='space-between'>
         <Col className='header__user' span={12}> 
@@ -19,14 +37,18 @@ export default function Header(props: IHeaderProps) {
         </Col>
         <Row className='list-info' justify='end'>
             <div className='item item--quest'>
-              <QuestionCircleOutlined />
+              <QuestionCircleOutlined className='icon icon--header' />
             </div>
             <div className="item item--notification">
-              <BellOutlined />
+              <BellOutlined className='icon icon--header'/>
             </div>
             <Switch className="item item--language" checkedChildren="VN" unCheckedChildren="US" defaultChecked />
-            <UserOutlined className="item item--avatar" />
+            <Dropdown overlay={menu} placement="bottomLeft" arrow={{ pointAtCenter: true }}>
+              <UserOutlined className="item item--avatar" />
+            </Dropdown>
         </Row>
       </Row>
   );
 }
+
+export default Header;

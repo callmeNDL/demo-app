@@ -1,7 +1,7 @@
 import {
     UsergroupDeleteOutlined,
-    TransactionOutlined,
-    ControlOutlined
+    SettingOutlined,
+    LogoutOutlined
   } from '@ant-design/icons';
 
 export const routes = [
@@ -10,5 +10,16 @@ export const routes = [
         label: 'Quản lí người dùng',
         path: '/'
     },
+    {
+        icon: SettingOutlined,
+        label: 'Setting 1',
+        path: '/'
+    },
+    {
+        icon: LogoutOutlined,
+        label: 'Setting 2',
+        path: '/'
+    },
+    
    
 ]

@@ -1,4 +1,4 @@
-.create-user {
+.bar-user {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,12 +14,20 @@
 
   &__button {
     padding: 5px 15px 5px 0;
-    .icon-add-user {
+
+    .icon-add-bar-user {
       font-size: 24px;
       background-color: var(--primary);
       padding: 10px;
       border-radius: 15px;
 
+      &:hover {
+        color: white;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }

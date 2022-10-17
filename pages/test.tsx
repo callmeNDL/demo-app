@@ -3,5 +3,5 @@ import * as React from 'react';
 export interface IAppProps {}
 
 export default function App(props: IAppProps) {
-  return <div>Nguyen duc long</div>;
+  return <div>Create User</div>;
 }

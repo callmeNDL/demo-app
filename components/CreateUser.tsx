@@ -5,10 +5,10 @@ type Props = {}
 
 const CreateUser = (props: Props) => {
   return (
-    <div className='create-user bg-white'>
-        <div className='create-user__title'>Quản lý người dùng</div>
-        <div className='create-user__button'>
-        <UserAddOutlined className='icon-add-user'/>
+    <div className='bar-user bg-white'>
+        <div className='bar-user__title'>Quản lý người dùng</div>
+        <div className='bar-user__button'>
+        <UserAddOutlined className='icon-add-bar-user'/>
         </div>
     </div>
   )
