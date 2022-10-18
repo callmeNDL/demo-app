@@ -1,6 +1,8 @@
 .create-user {
     background: white;
     border-radius: 15px 15px 0 0;
+    padding: 25px 10px;
+    margin-top: 10px;
 
     &__title {
         border-bottom: 1px solid var(--borderPrimary);
@@ -10,6 +12,7 @@
     }
 
     &__box {
+        padding-top: 20px;
         .ant-form-item {
             margin-bottom: 10px;
 

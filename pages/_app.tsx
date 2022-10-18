@@ -7,6 +7,7 @@ import '../assets/scss/CreateUser.scss';
 
 import '../assets/scss/pages/PageCreateUser.scss';
 import '../assets/scss/form/FormCreateUser.scss';
+import '../assets/scss/notification/Notification.scss';
 
 import 'antd/dist/antd.css';
 
