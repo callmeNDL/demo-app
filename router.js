@@ -8,17 +8,17 @@ export const routes = [
     {
         icon: UsergroupDeleteOutlined,
         label: 'Quản lí người dùng',
-        path: '/'
+        path: '/user'
     },
     {
         icon: SettingOutlined,
-        label: 'Setting 1',
-        path: '/'
+        label: 'Notification',
+        path: '/notification'
     },
     {
         icon: LogoutOutlined,
-        label: 'Setting 2',
-        path: '/'
+        label: 'Test',
+        path: '/test'
     },
     
    

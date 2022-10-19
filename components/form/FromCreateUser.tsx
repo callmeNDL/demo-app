@@ -67,37 +67,29 @@ const FormCreateUser = () => {
               },
             ]}
           >
-            <DatePicker placeholder="yyyy/mm/dd" />
+            <DatePicker placeholder="YYYY-MM-DD" format={'YYYY-MM-DD'} />
           </Form.Item>
         </Col>
         <Col span={12}>
           <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
             <Select placeholder="Select a option and change input text above" allowClear>
-              <Option value="male">male</Option>
-              <Option value="female">female</Option>
-              <Option value="other">other</Option>
+              <Option value="male">Male</Option>
+              <Option value="female">Female</Option>
+              <Option value="other">Other</Option>
             </Select>
           </Form.Item>
         </Col>
       </Row>
       <Form.Item
         className="user__item"
-        label="Tên hiển thị khi giao dịch"
-        name="showname"
-        rules={[{ required: true, message: 'Vui lòng nhập tên hiển thị khi giao dịch!' }]}
-      >
-        <Input placeholder="Tên hiển thị khi giao dịch" />
-      </Form.Item>
-      <Form.Item
-        className="user__item"
         label="Phòng ban"
-        name="roles"
+        name="department"
         rules={[{ required: true, message: 'Chọn phòng ban!' }]}
       >
         <Select placeholder="Select a option and change input text above" allowClear>
-          <Option value="male">123</Option>
-          <Option value="female">123</Option>
-          <Option value="other">123</Option>
+          <Option value="KT">Kỹ thuật</Option>
+          <Option value="QC">QC</Option>
+          <Option value="DESIGN">DESIGN</Option>
         </Select>
       </Form.Item>
     </>

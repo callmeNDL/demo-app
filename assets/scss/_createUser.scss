@@ -22,7 +22,9 @@
       border-radius: 15px;
 
       &:hover {
-        color: white;
+        path {
+          color: white;
+        }
       }
     }
 

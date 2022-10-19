@@ -1,7 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 
 export interface IAppProps {}
 
 export default function App(props: IAppProps) {
-  return <div>Create User</div>;
+  const data = new Date();
+  console.log(data.toLocaleDateString());
+
+  return <div>Test</div>;
 }

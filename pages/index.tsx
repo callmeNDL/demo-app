@@ -3,11 +3,12 @@ import CreateUser from '../components/CreateUser';
 import TableUser from '../components/TableUser';
 
 const Home: NextPage = ({}) => {
-  return <>
-  <CreateUser />
-  <TableUser />
-  </>;
-
+  return (
+    <>
+      <CreateUser />
+      <TableUser />
+    </>
+  );
 };
 
 export default Home;

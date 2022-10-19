@@ -5,13 +5,17 @@ import 'antd/dist/antd.css';
 
 import type { AppProps } from 'next/app';
 import AppLayout from '../layout/AppLayout';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <AppLayout>
-        <Component {...pageProps} />
-      </AppLayout>
+      <Provider store={store}>
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      </Provider>
     </>
   );
 }

@@ -1,17 +1,20 @@
-import { SendOutlined } from '@ant-design/icons';
 import { Button, Col, Form, Row } from 'antd';
-import { useState } from 'react';
 import FormCreateUser from '../../components/form/FromCreateUser';
-import { CreateUserInput } from '../../models';
-interface IUser {
-  name: string;
-}
+import { useAppDispatch } from '../../redux/hooks';
+import { createUser } from '../../redux/user/user.slice';
+
 const CreateUser = () => {
   const [form] = Form.useForm();
-  const [user, setUser] = useState<CreateUserInput>();
+  const dicpatch = useAppDispatch();
 
   const handleNextStep = () => {
-    console.log(form.getFieldsValue());
+    let data = form.getFieldsValue();
+    data.birthday = data.birthday.toISOString();
+    console.log('dddđ');
+
+    if (data) {
+      dicpatch(createUser(data));
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {};
