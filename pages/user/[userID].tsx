@@ -1,32 +1,47 @@
 import { Button, Col, Form, Row, Spin } from 'antd';
-import moment from 'moment';
-import { useEffect, useState } from 'react';
 import FormCreateUser from '../../components/form/FromCreateUser';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { createUser } from '../../redux/user/user.slice';
+import { useEffect } from 'react';
+import moment from 'moment';
+import Router, { useRouter } from 'next/router';
+import { updateUser } from '../../redux/user/user.slice';
 
-const CreateUser = () => {
+const UpdateUser = () => {
   const [form] = Form.useForm();
+  const { items } = useAppSelector((state) => state.user.data);
+  const { loading } = useAppSelector((state) => state.user);
   const dicpatch = useAppDispatch();
-  const [createLoading, setCreateloading] = useState(false);
+  const router = useRouter();
+  const userID: string | string[] | undefined = router.query.userID;
+
+  const user = items.find((item) => {
+    if (item.id == userID) return item;
+  });
+
   const handleNextStep = () => {
     let data = form.getFieldsValue();
+    data.id = user?.id;
     data.birthday = moment(data.birthday).toISOString();
     if (data) {
-      dicpatch(createUser(data));
+      dicpatch(updateUser(data));
     }
   };
 
-  const { error, loading } = useAppSelector((state) => state.user);
+  useEffect(() => {
+    form.setFieldsValue({
+      ...user,
+      birthday: moment(moment(user?.birthday).format('DD/MM/YYYY'), 'DD/MM/YYYY'),
+    });
+  }, []);
 
   const onFinishFailed = (errorInfo: any) => {};
 
   return (
     <div className="create-user">
-      <div className="create-user__title">Tạo tài khoản</div>
-      <Spin tip="Tạo người dùng ..." spinning={loading}>
-        <div className="create-user__box">
-          <Col span={24} md={12} xl={8} className="box-user">
+      <div className="create-user__title">Cập nhật tài khoản</div>
+      <div className="create-user__box">
+        <Col span={24} md={12} xl={8} className="box-user">
+          <Spin tip="Cập nhật..." spinning={loading}>
             <Form
               layout="vertical"
               className="user"
@@ -43,15 +58,15 @@ const CreateUser = () => {
                   style={{ width: 120 }}
                   className="btn btn--create"
                 >
-                  Hoàn thành
+                  Cập nhật
                 </Button>
               </Row>
             </Form>
-          </Col>
-        </div>
-      </Spin>
+          </Spin>
+        </Col>
+      </div>
     </div>
   );
 };
 
-export default CreateUser;
+export default UpdateUser;

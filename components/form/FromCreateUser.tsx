@@ -5,7 +5,7 @@ import { Option } from 'antd/lib/mentions';
 
 const FormCreateUser = () => {
   const { Option } = Select;
-
+  const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY'];
   return (
     <>
       <Form.Item
@@ -67,7 +67,7 @@ const FormCreateUser = () => {
               },
             ]}
           >
-            <DatePicker placeholder="YYYY-MM-DD" format={'YYYY-MM-DD'} />
+            <DatePicker placeholder="DD-MM-YYYY" format={dateFormatList} />
           </Form.Item>
         </Col>
         <Col span={12}>

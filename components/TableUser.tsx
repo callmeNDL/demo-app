@@ -1,6 +1,8 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Space, Table, Tag, Typography } from 'antd';
+import { Space, Spin, Table, Tag, Typography } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { User } from '../interfaces/data.interfaces';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
@@ -8,7 +10,9 @@ import { deleteData, fetchData } from '../redux/user/user.slice';
 
 const TableUser: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { items } = useAppSelector((state) => state.user.data);
+  const { loading, data } = useAppSelector((state) => state.user);
+  const router = useRouter();
+
   const columns: ColumnsType<User> = [
     {
       title: 'Họ Tên',
@@ -34,14 +38,16 @@ const TableUser: React.FC = () => {
     {
       title: 'Giới tính',
       key: 'gender',
-      dataIndex: 'gender',
+      render: (_, record) => <Space size="middle">{record.gender}</Space>,
     },
     {
       title: 'Action',
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <EditOutlined className="icon icon--action" />
+          <Link href={`/user/${record.id}`}>
+            <EditOutlined className="icon icon--action" />
+          </Link>
           <DeleteOutlined
             className="icon icon--action"
             onClick={() => {
@@ -57,7 +63,11 @@ const TableUser: React.FC = () => {
     dispatch(fetchData());
   }, []);
 
-  return <Table columns={columns} dataSource={items} scroll={{ x: 200 }} />;
+  return (
+    <Spin spinning={loading}>
+      <Table columns={columns} dataSource={data.items} scroll={{ x: 200 }} />
+    </Spin>
+  );
 };
 
 export default TableUser;
