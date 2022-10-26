@@ -1,4 +1,14 @@
 .icon {
+    &--default {
+        font-size: 18px;
+        svg {
+            display: flex;
+            path {
+                color: white;
+            }
+        }
+       
+    }
     &--header {
         font-size: 18px;
         font-weight: 700;
@@ -14,4 +24,5 @@
            }
         }
     }
+
 }

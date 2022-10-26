@@ -6,5 +6,9 @@ export interface User {
     birthday: string;
     gender: string;
     department:string,
-
   }
+
+export interface RestAPI {
+  data: User[],
+  status:number,
+}

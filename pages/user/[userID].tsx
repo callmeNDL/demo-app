@@ -28,6 +28,9 @@ const UpdateUser = () => {
   };
 
   useEffect(() => {
+    if (!user) {
+      router.push('/user');
+    }
     form.setFieldsValue({
       ...user,
       birthday: moment(moment(user?.birthday).format('DD/MM/YYYY'), 'DD/MM/YYYY'),

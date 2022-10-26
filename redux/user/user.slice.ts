@@ -8,6 +8,7 @@ interface InitState {
     items: User[];
     item:Partial<User>
   };
+  searchText:string,
   error: string | null;
 }
 
@@ -18,6 +19,7 @@ const initialState: InitState = {
     itemTotal: 0,
     item:{}
   },
+  searchText:'',
   error: null,
 };
 
@@ -52,6 +54,14 @@ export const userSlice = createSlice({
     stopLoading:(state) =>{
       state.loading= false
     },
+    searchDataStart:(state,action:PayloadAction<string>) =>{
+      state.searchText = action.payload,
+      state.loading =true;
+    },
+    searchDataSuccess: (state, action: PayloadAction<User[]>) => {
+        state.data.items = action.payload; 
+        state.loading = false;
+    },
     setError: (state, action: PayloadAction<string>) => {
       state.loading = false;
       state.error = action.payload; 
@@ -59,6 +69,6 @@ export const userSlice = createSlice({
   }      
 });
 
-export const { fetchData,fetchDataSuccess ,setError, deleteData,createUser,stopLoading,updateUser } = userSlice.actions;
+export const { fetchData,fetchDataSuccess ,setError, deleteData,createUser,stopLoading,updateUser,searchDataStart,searchDataSuccess } = userSlice.actions;
 
 export default userSlice.reducer;

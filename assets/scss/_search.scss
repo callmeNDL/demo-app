@@ -1,0 +1,17 @@
+.search-box {
+    background: white;
+    padding: 10px;
+
+    .ant-btn-default {
+        border-radius: 5px;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .ant-input {
+        border-radius: 5px;
+        width: 350px;
+        
+    }
+}

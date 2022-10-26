@@ -1,12 +1,14 @@
-import { createUserApi, updateUserApi } from './../../api/user';
+import { RestAPI } from './../../interfaces/data.interfaces';
+import { createUserApi, updateUserApi, searchUserApi } from './../../api/user';
 import axios from 'axios';
 
 import { PayloadAction } from '@reduxjs/toolkit';
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { deleteData, fetchData, fetchDataSuccess, setError ,createUser, stopLoading, updateUser} from './user.slice';
+import { deleteData, fetchData, fetchDataSuccess, setError ,createUser, stopLoading, updateUser, searchDataStart, searchDataSuccess} from './user.slice';
 import { deleteUserApi } from '../../api/user';
 import { User } from '../../interfaces/data.interfaces';
 import Router from 'next/router';
+import { toast } from 'react-toastify';
 
 const callApi = (url: string)=>{
     return axios.get(url)
@@ -41,6 +43,7 @@ export function* createUserSaga(action: PayloadAction<User>) {
      if(res === 201){
       yield put(stopLoading()) 
       Router.push('/user')
+      toast.success("abc")
      }
      else {
       yield put(setError("Can't create user"))
@@ -67,11 +70,29 @@ export function* updateUserSaga(action: PayloadAction<User>) {
     yield put(setError("Can't update user"))
   }
 }
+
+export function* searchDataSaga(action: PayloadAction<string>) {
+
+  try {
+    const res:RestAPI = yield call(searchUserApi,action.payload);
+    if(res.status === 200) {
+      yield put(searchDataSuccess(res.data))
+    }else {
+      yield put(setError("Can't search user"))
+    }
+
+  } catch (error) {
+    yield put(setError("Can't search user"))
+  }
+}
+
 export function* userSaga() {
     yield takeLatest(fetchData.type, userApi);
     yield takeLatest(deleteData.type, deleteUserSaga);
     yield takeLatest(createUser.type, createUserSaga);
     yield takeLatest(updateUser.type, updateUserSaga);
+    yield takeLatest(searchDataStart.type, searchDataSaga);
+
 
 }
 

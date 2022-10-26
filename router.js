@@ -1,7 +1,8 @@
 import {
     UsergroupDeleteOutlined,
     SettingOutlined,
-    LogoutOutlined
+    LogoutOutlined,
+    CameraOutlined
   } from '@ant-design/icons';
 
 export const routes = [
@@ -14,6 +15,11 @@ export const routes = [
         icon: SettingOutlined,
         label: 'Notification',
         path: '/notification'
+    },
+    {
+        icon: CameraOutlined,
+        label: 'Camera',
+        path: '/camera'
     },
     {
         icon: LogoutOutlined,

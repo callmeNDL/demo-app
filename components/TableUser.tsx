@@ -1,17 +1,16 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Space, Spin, Table, Tag, Typography } from 'antd';
+import { Space, Spin, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { User } from '../interfaces/data.interfaces';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { deleteData, fetchData } from '../redux/user/user.slice';
+import SearchApp from './Search';
 
 const TableUser: React.FC = () => {
   const dispatch = useAppDispatch();
   const { loading, data } = useAppSelector((state) => state.user);
-  const router = useRouter();
 
   const columns: ColumnsType<User> = [
     {
@@ -64,9 +63,12 @@ const TableUser: React.FC = () => {
   }, []);
 
   return (
-    <Spin spinning={loading}>
-      <Table columns={columns} dataSource={data.items} scroll={{ x: 200 }} />
-    </Spin>
+    <>
+      <SearchApp />
+      <Spin spinning={loading}>
+        <Table columns={columns} dataSource={data.items} scroll={{ x: 200 }} />
+      </Spin>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import { Button, Col, Form, Row, Spin } from 'antd';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
 import FormCreateUser from '../../components/form/FromCreateUser';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { createUser } from '../../redux/user/user.slice';
@@ -8,7 +7,8 @@ import { createUser } from '../../redux/user/user.slice';
 const CreateUser = () => {
   const [form] = Form.useForm();
   const dicpatch = useAppDispatch();
-  const [createLoading, setCreateloading] = useState(false);
+  const { loading } = useAppSelector((state) => state.user);
+
   const handleNextStep = () => {
     let data = form.getFieldsValue();
     data.birthday = moment(data.birthday).toISOString();
@@ -16,8 +16,6 @@ const CreateUser = () => {
       dicpatch(createUser(data));
     }
   };
-
-  const { error, loading } = useAppSelector((state) => state.user);
 
   const onFinishFailed = (errorInfo: any) => {};
 

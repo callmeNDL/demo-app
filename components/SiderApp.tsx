@@ -13,7 +13,7 @@ const items: MenuProps['items'] = routes.length
       key: String(index + 1),
       icon: React.createElement(item.icon),
       label: (
-        <Link key={index} href={item.path}>
+        <Link href={item.path}>
           <a>{item.label}</a>
         </Link>
       ),

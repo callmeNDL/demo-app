@@ -13,3 +13,8 @@ export const updateUserApi = async (user: User) => {
 	const { status } = await axios.put(`https://634f61eb4af5fdff3a73481d.mockapi.io/users/${user.id}`,user);
 	return status;
 };
+export const searchUserApi = async (searchText: string) => {
+	const res = await axios.get(`https://634f61eb4af5fdff3a73481d.mockapi.io/users?search=${searchText}`);
+	console.log(res);
+	return res;
+};
