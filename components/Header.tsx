@@ -7,7 +7,7 @@ import {
   InfoCircleOutlined,
 } from '@ant-design/icons';
 import Image from 'next/image';
-import logo from 'assets/img/logo-payMe.png';
+// import logo from 'assets/img/logo-payMe.png';
 import Link from 'next/link';
 
 export interface IHeaderProps {}
@@ -50,7 +50,13 @@ const Header = () => {
     <Row className="header" justify="space-between">
       <Col className="header__user" span={12}>
         <Link href={'/'}>
-          <Image className="icon-logo" src={logo} alt="logo-payme" width={40} height={40} />
+          <Image
+            className="icon-logo"
+            src="https://payme.vn/web/images/open1/new-logo.svg"
+            alt="logo-payme"
+            width={40}
+            height={40}
+          />
         </Link>
       </Col>
       <Row className="list-info" justify="end">
