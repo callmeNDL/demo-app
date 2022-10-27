@@ -1,4 +1,4 @@
-import { Button, Card, Image } from 'antd';
+import { Button, Card, Image, notification } from 'antd';
 import { useRef, useState, useCallback } from 'react';
 import Webcam from 'react-webcam';
 
@@ -17,6 +17,25 @@ const Camera = () => {
       setUrl(imageSrc);
     }
   }, [webcamRef]);
+
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      // setScan(true);
+    })
+    .catch((err) => {
+      openNotification();
+    });
+
+  const openNotification = () => {
+    const args = {
+      message: 'Notification Title',
+      description:
+        'I will never close automatically. This is a purposely very very long description that has many many characters and words.',
+      duration: 0,
+    };
+    notification.open(args);
+  };
 
   return (
     <div className="camera">
