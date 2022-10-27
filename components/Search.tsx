@@ -3,13 +3,14 @@ import { Button, Col, Row } from 'antd';
 import Input from 'antd/lib/input/Input';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useAppDispatch } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { searchDataStart } from '../redux/user/user.slice';
 
 type Props = {};
 
 const SearchApp = (props: Props) => {
   const [searchText, setSearchText] = useState('');
+  const { loading } = useAppSelector((state) => state.user);
   const router = useRouter();
   const dichpatch = useAppDispatch();
   const getSearchText = (e: string) => {
@@ -32,7 +33,7 @@ const SearchApp = (props: Props) => {
           ></Input>
         </Col>
         <Col>
-          <Button className="btn--create" onClick={handleSearch}>
+          <Button className="btn--create" onClick={handleSearch} disabled={loading}>
             <SearchOutlined className="icon--default" />
             Tìm kiếm
           </Button>
