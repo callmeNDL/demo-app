@@ -1,0 +1,13 @@
+.camera {
+  .ant-card-body {
+  display: flex; 
+  justify-content: start;
+  }
+
+  .photo {
+    margin: auto;
+    .ant-image {
+      margin-bottom: 5px;
+    }
+  }
+}
