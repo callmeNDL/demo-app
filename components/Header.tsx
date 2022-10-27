@@ -7,7 +7,7 @@ import {
   InfoCircleOutlined,
 } from '@ant-design/icons';
 import Image from 'next/image';
-import logo from '../assets/img/logo-payMe.png';
+import logo from 'assets/img/logo-payMe.png';
 import Link from 'next/link';
 
 export interface IHeaderProps {}
