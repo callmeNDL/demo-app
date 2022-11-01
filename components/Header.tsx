@@ -7,7 +7,6 @@ import {
   InfoCircleOutlined,
 } from '@ant-design/icons';
 import Image from 'next/image';
-// import logo from 'assets/img/logo-payMe.png';
 import Link from 'next/link';
 
 export interface IHeaderProps {}
@@ -59,7 +58,7 @@ const Header = () => {
           />
         </Link>
       </Col>
-      <Row className="list-info" justify="end">
+      <Col className="list-info" span={12}>
         <div className="item item--quest">
           <QuestionCircleOutlined className="icon icon--header" />
         </div>
@@ -76,7 +75,7 @@ const Header = () => {
         <Dropdown overlay={menu} placement="bottomLeft" arrow={{ pointAtCenter: true }}>
           <UserOutlined className="item item--avatar" />
         </Dropdown>
-      </Row>
+      </Col>
     </Row>
   );
 };
