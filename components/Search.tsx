@@ -37,7 +37,7 @@ const SearchApp = (props: Props) => {
         <Col>
           <Button className="btn--create" onClick={handleSearch} disabled={loading}>
             <SearchOutlined className="icon--default" />
-            Tìm kiếm
+            <span className="text">Tìm kiếm</span>
           </Button>
         </Col>
       </Row>

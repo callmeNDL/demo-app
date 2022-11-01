@@ -55,7 +55,7 @@ const Header = () => {
           height={30}
         />
       </Col>
-      <Row className="list-info" justify="end">
+      <Col className="list-info" span={12}>
         <div className="item item--quest">
           <QuestionCircleOutlined className="icon icon--header" />
         </div>
@@ -72,7 +72,7 @@ const Header = () => {
         <Dropdown overlay={menu} placement="bottomLeft" arrow={{ pointAtCenter: true }}>
           <UserOutlined className="item item--avatar" />
         </Dropdown>
-      </Row>
+      </Col>
     </Row>
   );
 };

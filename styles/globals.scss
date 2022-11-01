@@ -59,6 +59,18 @@ a {
   }
 }
 
+@media (max-width: 600px) {
+  .btn {
+    &--create {
+      margin-left: 5px !important;
+
+      .text {
+        display: none;
+      }
+    }
+  }
+}
+
 .ant-input {
   &:focus {
     

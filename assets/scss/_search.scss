@@ -7,11 +7,14 @@
         margin-left: 20px;
         display: flex;
         align-items: center;
+        
     }
 
     .ant-input {
         border-radius: 5px;
-        width: 350px;
-        
+        max-width: 350px; 
     }
 }
+
+
+  
