@@ -55,7 +55,7 @@ const Header = () => {
           height={30}
         />
       </Col>
-      <Col className="list-info" span={12}>
+      <Col className="list-info" span={12} style={{ justifyContent: 'end' }}>
         <div className="item item--quest">
           <QuestionCircleOutlined className="icon icon--header" />
         </div>

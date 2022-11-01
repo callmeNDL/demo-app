@@ -12,9 +12,15 @@
 
     .ant-input {
         border-radius: 5px;
-        max-width: 350px; 
     }
 }
 
+@media (max-width: 600px) {
+    .ant-btn-default {
+       width: 100%;
+       justify-content: center;
+        
+    }
+}  
 
   

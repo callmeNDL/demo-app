@@ -38,6 +38,7 @@ const SiderApp = () => {
   return (
     <Layout hasSider>
       <Sider
+        className="sider-app"
         breakpoint="lg"
         style={{
           overflow: 'auto',

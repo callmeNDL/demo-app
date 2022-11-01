@@ -27,14 +27,14 @@ const SearchApp = (props: Props) => {
   return (
     <div className="search-box">
       <Row>
-        <Col>
+        <Col xs={18} md={10}>
           <Input
             placeholder="Nhập Họ tên, email, số điện thoại, chức vụ,..."
             onChange={(e) => getSearchText(e.target.value)}
             value={searchText}
           ></Input>
         </Col>
-        <Col>
+        <Col xs={6}>
           <Button className="btn--create" onClick={handleSearch} disabled={loading}>
             <SearchOutlined className="icon--default" />
             <span className="text">Tìm kiếm</span>
