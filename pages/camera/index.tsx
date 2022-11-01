@@ -1,5 +1,5 @@
 import { Button, Card, Image, notification } from 'antd';
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import Webcam from 'react-webcam';
 
 const Camera = () => {
@@ -18,23 +18,21 @@ const Camera = () => {
     }
   }, [webcamRef]);
 
-  navigator.mediaDevices
-    .getUserMedia({ video: true })
-    .then((stream) => {
-      // setScan(true);
-    })
-    .catch((err) => {
-      openNotification();
-    });
-
-  const openNotification = () => {
-    const args = {
-      message: 'Notification Title',
-      description:
-        'I will never close automatically. This is a purposely very very long description that has many many characters and words.',
-      duration: 0,
-    };
-    notification.open(args);
+  const handleStartCamera = () => {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        setCaptureEnable(true);
+      })
+      .catch((err) => {
+        const args = {
+          message: 'Hot',
+          description:
+            'I will never close automatically. This is a purposely very very long description that has many many characters and words.',
+          duration: 0,
+        };
+        notification.open(args);
+      });
   };
 
   return (
@@ -43,7 +41,7 @@ const Camera = () => {
         title="camera"
         extra={
           !isCaptureEnable ? (
-            <Button type="primary" onClick={() => setCaptureEnable(true)} className="btn">
+            <Button type="primary" onClick={handleStartCamera} className="btn">
               Start
             </Button>
           ) : (
@@ -95,4 +93,9 @@ const Camera = () => {
     </div>
   );
 };
+export async function getServerSideProps(context: any) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
 export default Camera;

@@ -18,8 +18,10 @@ const SearchApp = (props: Props) => {
   };
 
   const handleSearch = () => {
-    dichpatch(searchDataStart(searchText.trim()));
-    router.push({ query: { search: searchText } });
+    if (searchText.trim()) {
+      dichpatch(searchDataStart(searchText.trim()));
+      router.push({ query: { search: searchText } });
+    }
   };
 
   return (

@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import type { MenuProps } from 'antd';
 import { Layout, Menu } from 'antd';
-
 import { routes } from '../router';
+import { useRouter } from 'next/router';
 
 const { Sider } = Layout;
 
@@ -21,6 +20,21 @@ const items: MenuProps['items'] = routes.length
   : [];
 
 const SiderApp = () => {
+  const router = useRouter();
+
+  const defaultKey = routes.reduce((pre: any, item: any, index) => {
+    if (router.asPath.split('?')[0].includes(item.path)) {
+      return index + 1;
+    }
+    return pre;
+  }, 0);
+
+  useEffect(() => {
+    if (!defaultKey) {
+      router.push('/not-found');
+    }
+  }, []);
+
   return (
     <Layout hasSider>
       <Sider
@@ -36,7 +50,12 @@ const SiderApp = () => {
         }}
         width={280}
       >
-        <Menu mode="inline" defaultSelectedKeys={['1']} items={items} className="menu-sider" />
+        <Menu
+          mode="inline"
+          defaultSelectedKeys={[`${defaultKey}`]}
+          items={items}
+          className="menu-sider"
+        />
       </Sider>
     </Layout>
   );
